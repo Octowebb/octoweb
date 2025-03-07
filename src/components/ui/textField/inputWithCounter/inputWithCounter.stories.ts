@@ -16,7 +16,6 @@ export const Primary: Story = {
     label: "О проекте",
     isRequiredField: true,
     placeholder: "Расскажите о своем проекте",
-    value: "aboutProject",
     onChange: () => {},
   },
 };
@@ -26,7 +25,6 @@ export const WithErrors: Story = {
     label: "О проекте",
     isRequiredField: true,
     placeholder: "Расскажите о своем проекте",
-    value: "aboutProject",
     onChange: () => {},
     errorMessage: ["Обязательное поле", "Размер файла не более 5мб"],
   },

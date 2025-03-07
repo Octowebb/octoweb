@@ -14,11 +14,4 @@ export const Primary: Story = {
   args: {
     label: "Дополнительные файлы",
   },
-  parameters: {
-    docs: {
-      description: {
-        story: "Does not work outside the react-hook-form.",
-      },
-    },
-  },
 };

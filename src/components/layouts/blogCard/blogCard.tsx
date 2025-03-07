@@ -67,6 +67,7 @@ export const BlogCard = (props: BlogCardProps) => {
           fill
           priority={priority}
           sizes="(max-width: 450px) 100vw, (max-width: 767px) 450px, (max-width: 1000px) 100vw, 1665px"
+          unoptimized
         />
         <div className={s.markContainer}>
           <div className={s.tagList}>{tagList}</div>

@@ -36,4 +36,12 @@ type Story = StoryObj<typeof meta>;
 
 export const Primary: Story = {
   args: { faqData: faqData },
+  parameters: {
+    docs: {
+      description: {
+        story:
+          "The answer is not shown in the story because the logic of the question is adjusted to match the animation of the footer. On the page where footer animation is enabled, everything works as expected.",
+      },
+    },
+  },
 };

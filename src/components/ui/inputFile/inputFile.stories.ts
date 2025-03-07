@@ -17,11 +17,7 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Primary: Story = {
-  parameters: {
-    docs: {
-      description: {
-        story: "Does not work outside the react-hook-form.",
-      },
-    },
+  args: {
+    name: "file",
   },
 };

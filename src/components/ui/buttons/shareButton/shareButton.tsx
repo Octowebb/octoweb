@@ -20,7 +20,7 @@ export const ShareButton = (props: ShareButtonProps) => {
   }, []);
 
   const shareData = {
-    title: "Octoweb.ru - Создание и продвижений сайтов",
+    title: "Octoweb - Создание и продвижений сайтов",
     text: "Посмотри эту статью. Мы подготовили для тебя много полезной информации!",
     url: url,
   };

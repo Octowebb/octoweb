@@ -33,7 +33,7 @@ export const Logo = (props: LogoProps) => {
           src={"/logoText.webp"}
           alt="Octoweb веб-студия"
           fill
-          sizes="(max-width: 767px) 95px, (max-width: 1279px) 201px, (max-width: 1425px) 95px, (max-width: 1905px) 115px, 158px"
+          unoptimized
         />
       </div>
     </Link>

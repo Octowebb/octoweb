@@ -60,9 +60,7 @@ export const Team = (props: TeamProps) => {
               alt={""}
               className={s.background}
               fill
-              sizes={
-                "(max-width: 450px) 100vw, (max-width:767px) 450px, (max-width: 970px) 800px, (max-width: 1675px) 600px, 820px"
-              }
+              unoptimized
               key="team-member-background"
             />
             {currentMemberCard}

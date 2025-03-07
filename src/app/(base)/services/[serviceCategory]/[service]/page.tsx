@@ -82,9 +82,9 @@ export default async function Service({
             src={serviceInfo.image}
             alt={""}
             fill
-            sizes={"100vw"}
             priority
             containerProps={{ className: s.serviceImg }}
+            unoptimized
           />
           <div className={s.aboutService}>
             <h2>ОБ УСЛУГЕ</h2>
@@ -135,7 +135,9 @@ export default async function Service({
               href={"#form"}
               rel={"nofollow"}
             />
-            <div className={s.background}></div>
+            <div className={s.bgContainer}>
+              <div className={s.background}></div>
+            </div>
           </div>
           <div className={s.bubblesPrices}>
             <BigBubble className={s.bigBubblePrices} />

@@ -35,7 +35,12 @@ export const Picture = <CT extends ElementType>(props: PictureProps<CT>) => {
           className={clsx(s.loader, loaderProps?.className)}
         />
       )}
-      <Image onLoad={handleImageLoaded} {...restProps} quality={100} />
+      <Image
+        onLoad={handleImageLoaded}
+        {...restProps}
+        quality={100}
+        unoptimized
+      />
     </ContainerComponent>
   );
 };

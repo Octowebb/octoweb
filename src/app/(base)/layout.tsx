@@ -13,7 +13,7 @@ export default async function RootLayout({
     <>
       <Header socials={socials || []} />
       <main className="main">
-        {children}
+        <div className="main-content">{children}</div>
         <div className={"overlay"}></div>
       </main>
       <FooterWithForm socials={socials || []} />

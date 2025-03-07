@@ -402,14 +402,12 @@ export default function Brief() {
   const currentKnowTargetAudience = currentFields[0];
   const currentMaterialsDevelopment = currentFields[1];
 
-  // useEffect(() => {
   if (currentKnowTargetAudience !== knowTargetAudience) {
     setTargetAudience(currentFields[0]);
   }
   if (currentMaterialsDevelopment !== materialsDevelopment) {
     setMaterialsDevelopment(currentFields[1]);
   }
-  // }, [currentKnowTargetAudience, currentMaterialsDevelopment]);
 
   const onSubmit = async (data: BriefValues) => {
     const response = await api.postBrief(data);

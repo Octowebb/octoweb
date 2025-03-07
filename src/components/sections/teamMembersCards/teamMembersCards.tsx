@@ -67,16 +67,18 @@ export const TeamMemberCards = (props: TeamMemberCardsProps) => {
           />
         </div>
       </div>
-      <Swiper
-        className={s.cards}
-        slidesPerView={"auto"}
-        onSwiper={(swiper) =>
-          handleSwiper(swiper, swiperRef as MutableRefObject<SwiperClass>)
-        }
-        onProgress={handleUpdateButtonsState}
-      >
-        {teamMemberList}
-      </Swiper>
+      <div className={s.placeholder}>
+        <Swiper
+          className={s.cards}
+          slidesPerView={"auto"}
+          onSwiper={(swiper) =>
+            handleSwiper(swiper, swiperRef as MutableRefObject<SwiperClass>)
+          }
+          onProgress={handleUpdateButtonsState}
+        >
+          {teamMemberList}
+        </Swiper>
+      </div>
     </section>
   );
 };

@@ -20,6 +20,7 @@ export default function NotFound() {
             sizes={
               "(max-width: 1100px) 330px, (max-width: 1400px) 530px, 630px"
             }
+            unoptimized
           />
         </div>
       </div>
@@ -32,6 +33,7 @@ export default function NotFound() {
             sizes={
               "(max-width: 1100px) 330px, (max-width: 1400px) 530px, 630px"
             }
+            unoptimized
           />
         </div>
       </div>

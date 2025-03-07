@@ -13,13 +13,15 @@ type Story = StoryObj<typeof meta>;
 export const Required: Story = {
   args: {
     label: "Имя",
-    required: true,
+    placeholder: "Введите ваше имя",
+    isRequiredField: true,
   },
 };
 
 export const Optional: Story = {
   args: {
     label: "Имя",
-    required: false,
+    placeholder: "Введите ваше имя",
+    isRequiredField: false,
   },
 };

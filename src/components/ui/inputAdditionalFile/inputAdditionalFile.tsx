@@ -1,7 +1,10 @@
+"use client";
+
 import React, {
   ChangeEvent,
   ComponentPropsWithoutRef,
   ForwardedRef,
+  useEffect,
   useRef,
   useState,
 } from "react";
@@ -57,6 +60,16 @@ export const InputAdditionalFile = React.forwardRef(
         }
       }
     };
+
+    const handleReset = () => {
+      setFiles([]);
+      updateInputFiles([]);
+    };
+
+    useEffect(() => {
+      window.addEventListener("reset", handleReset);
+      return () => window.removeEventListener("reset", handleReset);
+    }, []);
 
     const attachedFiles = files.map((file) => (
       <AttachedFile

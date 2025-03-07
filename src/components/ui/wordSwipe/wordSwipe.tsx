@@ -20,7 +20,7 @@ export const WordSwipe = (props: WordSwipeProps) => {
   const { className, containerRef, words, ...restProps } = props;
   const classNames = clsx(s.wordSwipe, className);
   const placeholderRef = useRef<HTMLDivElement>(null);
-  const fallbackRef = useRef<HTMLElement>(null);
+  const fallbackRef = useRef<HTMLDivElement>(null);
   const effectiveRef = containerRef ?? fallbackRef;
   const isVisible = useIntersectionObserver(effectiveRef, 0.01);
   const longestWord = useMemo(() => {
@@ -72,7 +72,7 @@ export const WordSwipe = (props: WordSwipeProps) => {
   });
 
   return (
-    <div {...restProps} className={classNames}>
+    <div {...restProps} className={classNames} ref={fallbackRef}>
       {wordsForDisplay}
       <div className={clsx(s.word, s.placeholder)} ref={placeholderRef}>
         {longestWord}

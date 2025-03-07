@@ -48,6 +48,7 @@ export default async function CooperationCard(props: CooperationCardProps) {
             "(max-width: 767px) 375px,(max-width: 1265px) 736px, (max-width: 1425px) 1193px, (max-width: 1905px) 1224px, 1655px"
           }
           containerProps={{ className: s.imgContainer }}
+          unoptimized
         />
         <p>
           Мы базируемся в Краснодаре и эффективно сотрудничаем с клиентами по

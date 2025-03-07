@@ -70,7 +70,7 @@ export const ServicesLink = (props: ServicesLinkProps) => {
       {image && hoverable && (
         <div className={s.imgContainer}>
           <div className={s.imgPositionContainer}>
-            <Image src={image} alt={header} fill sizes={"394px"} />
+            <Image src={image} alt={header} fill sizes={"394px"} unoptimized />
           </div>
         </div>
       )}

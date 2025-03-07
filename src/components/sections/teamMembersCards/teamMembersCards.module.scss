@@ -12,8 +12,15 @@
   justify-content: flex-end;
 }
 
-.cards {
+.placeholder {
+  height: 536px;
+}
+
+.teamBlock .cards {
   user-select: none;
+  position: absolute;
+  width: 100vw;
+  left: 0;
 }
 
 .teamBlock .swiperSlide {
@@ -30,6 +37,10 @@
 }
 
 @media (max-width: 767px) {
+  .placeholder {
+    height: 268px;
+  }
+
   .header {
     margin-bottom: 30px;
   }

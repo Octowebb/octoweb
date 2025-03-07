@@ -3,12 +3,11 @@ import { clsx } from "clsx";
 import { ReactNode } from "react";
 import { montserrat, unbounded } from "@/app/fonts/fonts";
 import { PageLoader } from "@/components/ui/linearLoader/pageLoader";
-import { ToastContainer } from "react-toastify";
-import YandexMetrika from "@/common/ymScript";
 import { Metadata } from "next";
 import { TemplateString } from "next/dist/lib/metadata/types/metadata-types";
+import { Scripts } from "@/common/scripts";
+import { ToastContainer } from "react-toastify";
 
-export const revalidate = 60;
 export const dynamic = "force-static";
 
 export const metadata: Metadata = {
@@ -43,16 +42,12 @@ export default function RootLayout({
       <body>
         <PageLoader />
         {children}
-        <script
-          src="https://www.google.com/recaptcha/api.js?render=6Le0rM0qAAAAAIF-8ZPeA5_0RThCMWK1E_PIiv6c"
-          async
-        ></script>
         <ToastContainer
           position="bottom-left"
           theme="colored"
           autoClose={10000}
         />
-        <YandexMetrika />
+        <Scripts />
       </body>
     </html>
   );

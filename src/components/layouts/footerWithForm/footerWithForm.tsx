@@ -54,6 +54,7 @@ export const FooterWithForm = (props: FooterWithFormProps) => {
       top: 0,
       behavior: "instant",
     });
+    ScrollTrigger.refresh();
   }, [pathname]);
 
   return (

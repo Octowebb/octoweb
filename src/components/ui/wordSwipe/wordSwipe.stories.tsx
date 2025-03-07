@@ -14,4 +14,15 @@ export const Primary: Story = {
   args: {
     words: ["web", "seo"],
   },
+  decorators: [
+    (Story) => (
+      <div
+        style={{
+          fontSize: "100px",
+        }}
+      >
+        <Story />
+      </div>
+    ),
+  ],
 };

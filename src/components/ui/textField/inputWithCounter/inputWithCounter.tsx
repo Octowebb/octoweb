@@ -1,4 +1,6 @@
-import React, { ChangeEvent, Ref, useRef, useState } from "react";
+"use client";
+
+import React, { ChangeEvent, Ref, useEffect, useRef, useState } from "react";
 import clsx from "clsx";
 import s from "./inputWithCounter.module.scss";
 import commonStyles from "../textField.module.scss";
@@ -41,6 +43,11 @@ export const InputWithCounter = React.forwardRef(
       }
       onDeleteFile?.();
     };
+
+    useEffect(() => {
+      window.addEventListener("reset", handleDeleteFile);
+      return () => window.removeEventListener("reset", handleDeleteFile);
+    }, []);
 
     const errorText = errorMessage?.filter((message) => message).join(". ");
     const underlineMessage = file ? (

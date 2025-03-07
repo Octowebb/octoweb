@@ -74,8 +74,6 @@ body {
   background-color: black;
   font-family: var(--font-family-primary);
   overflow-x: hidden;
-  max-width: 1920px;
-  margin: 0 auto;
 }
 
 img {
@@ -132,6 +130,11 @@ h2 {
 .footer {
   position: relative;
   z-index: 3;
+}
+
+.main-content {
+  max-width: 1920px;
+  margin: 0 auto;
 }
 
 @media (max-width: 1905px) {

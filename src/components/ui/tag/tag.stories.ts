@@ -8,7 +8,7 @@ const meta = {
   tags: ["autodocs"],
   argTypes: {
     variant: {
-      options: ["colored", "monochrome-primary, monochrome-secondary"],
+      options: ["colored", "monochromePrimary", "monochromeSecondary"],
       control: { type: "radio" },
     },
   },

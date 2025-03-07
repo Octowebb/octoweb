@@ -13,18 +13,11 @@ export type BriefButtonProps = {
 export const BriefButton = (props: BriefButtonProps) => {
   const { variant = "primary", className, ...restProps } = props;
   const classNames = clsx(s.buttonContainer, className, s[variant]);
-  const getSizes = () => {
-    if (variant === "primary") {
-      return "(max-width: 1265px) 144px, (max-width: 1905px) 185px, 252px";
-    } else {
-      return "(max-width: 1265px) 91px, (max-width: 1905px) 185px, 252px";
-    }
-  };
 
   return (
     <div {...restProps} className={classNames}>
       <div className={s.stroke}>
-        <Image src="/stroke.webp" alt="" fill sizes={getSizes()} priority />
+        <Image src="/stroke.webp" alt="" fill priority unoptimized />
       </div>
       <Link
         href={routes.brief}

@@ -21,6 +21,21 @@ export const Dark: Story = {
     variant: "dark",
     text: "Больше кейсов",
   },
+  decorators: [
+    (Story) => (
+      <div
+        style={{
+          backgroundColor: "#d6ff41",
+          height: "200px",
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+        }}
+      >
+        <Story />
+      </div>
+    ),
+  ],
 };
 export const ColoredLink: Story = {
   args: {
