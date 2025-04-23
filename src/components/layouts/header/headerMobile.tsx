@@ -41,7 +41,7 @@ export const HeaderMobile = (props: HeaderMobileProps) => {
               <div className={s.sideMenuHeader}>
                 <Logo onClick={close} sideMenuLogo />
                 <button onClick={close} aria-label="Закрыть навигационное меню">
-                  <CloseIcon />
+                  <CloseIcon className={s.closeIcon} />
                 </button>
               </div>
               <Navbar className={s.navbar} onEveryLinkClick={close} />

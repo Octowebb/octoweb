@@ -57,6 +57,28 @@ export default async function Contacts() {
               containerProps={{ className: s.contactLinksContainer }}
             />
           )}
+          {contactInfo?.requisites && (
+            <div className={s.requisites}>
+              <span>{contactInfo.requisites.legal_name}</span>
+              <span>{contactInfo.requisites.activity}</span>
+              <span>ИНН: {contactInfo.requisites.inn}</span>
+              <span>Р/С: {contactInfo.requisites.account}</span>
+              <span>Банк: {contactInfo.requisites.bank}</span>
+              <span>К/С: {contactInfo.requisites.corr_account}</span>
+              <span>БИК: {contactInfo.requisites.bic}</span>
+            </div>
+          )}
+
+          {contactInfo?.offer_pdf && (
+            <a
+              href={contactInfo?.offer_pdf}
+              target="_blank"
+              rel="nofollow"
+              className={s.file}
+            >
+              Оферта
+            </a>
+          )}
         </div>
         <Map
           className={s.map}

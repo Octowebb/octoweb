@@ -1,0 +1,42 @@
+.cookie,
+.buttons {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 15px;
+}
+
+.cookie {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: var(--color-dark-secondary);
+  color: var(--color-light-100);
+  font-size: 12px;
+  padding: 15px 40px;
+  z-index: 100;
+
+  p {
+    text-align: center;
+  }
+}
+
+.button {
+  background-color: var(--color-primary);
+  padding: 5px 10px;
+  border-radius: 500px;
+  transition: background-color 0.3s;
+  text-align: center;
+}
+
+.button:hover {
+  background-color: #8c04ff;
+}
+
+@media (max-width: 500px) {
+  .cookie {
+    padding: 15px 20px;
+  }
+}

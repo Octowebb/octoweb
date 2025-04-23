@@ -11,4 +11,7 @@ export const routes = {
   article: "blog/:articleName",
   serviceCategory: "services/category/:serviceCategory",
   privacyPolicy: "/privacy-policy",
+  userAgreement: "/user-agreement",
+  personalDataPolicy: "/personal-data-policy",
+  cookieUsing: "/cookie-using",
 };

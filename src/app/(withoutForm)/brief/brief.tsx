@@ -1235,14 +1235,32 @@ export default function Brief() {
             <p className={s.terms}>
               Я принимаю условия{" "}
               <Link
-                href={routes.privacyPolicy}
-                className={clsx(s.privacyPolicy, "noRoutingLink")}
+                href={routes.userAgreement}
                 target="_blank"
+                className={clsx(s.doc, "noRoutingLink")}
               >
-                Политики ООО OctoWeb в отношении обработки данных
+                Пользовательского соглашения
               </Link>{" "}
-              и, нажимая на кнопку “Отправить”, даю согласие на обработку
-              компанией указанных мной персональных данных
+              и даю свое согласие на обработку моих персональных данных на
+              условиях{" "}
+              <Link
+                href={routes.privacyPolicy}
+                target="_blank"
+                className={clsx(s.doc, "noRoutingLink")}
+              >
+                Политики конфиденциальности.
+              </Link>{" "}
+              <span>
+                С&nbsp;
+                <Link
+                  href={routes.personalDataPolicy}
+                  target="_blank"
+                  className={clsx(s.doc, "noRoutingLink")}
+                >
+                  Политикой в отношении обработки и защиты персональных данных
+                </Link>{" "}
+                ознакомлен.
+              </span>
             </p>
             <Button
               text={"Отправить"}

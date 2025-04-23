@@ -51,10 +51,20 @@ export const Footer = (props: FooterProps) => {
           <NavigationButton variant={"up"} as={"a"} href={"#top"} />
         </div>
         <div className={s.bottomCaption}>
-          <Link href={routes.privacyPolicy} target={"_blank"}>
-            {" "}
-            Политика конфиденциальности{" "}
-          </Link>
+          <div className={s.docLinks}>
+            <Link href={routes.privacyPolicy} target={"_blank"}>
+              Политика конфиденциальности
+            </Link>
+            <Link href={routes.userAgreement} target={"_blank"}>
+              Пользовательское соглашение
+            </Link>
+            <Link href={routes.cookieUsing} target={"_blank"}>
+              Политика использования cookie
+            </Link>
+            <Link href={routes.personalDataPolicy} target={"_blank"}>
+              Политика обработки персональных данных
+            </Link>
+          </div>
           <span className={s.copyright}>
             © OctoWeb {new Date().getFullYear()} — Все права защищены
           </span>

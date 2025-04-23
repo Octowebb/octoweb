@@ -1,9 +1,9 @@
 import { api } from "@/common/api";
-import s from "./docs.module.scss";
+import s from "../privacy-policy/docs.module.scss";
 import { clsx } from "clsx";
 
-export default async function PrivacyPolicy() {
-  const response = await api.getPrivacyPolicy();
+export default async function UserAgreement() {
+  const response = await api.getUserAgreement();
 
   if (!response) return null;
 

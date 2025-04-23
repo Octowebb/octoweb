@@ -1,18 +1,23 @@
-.privacyPage {
+.docPage {
   line-height: var(--line-height-180);
 
   h1 {
-    font-size: 80px;
+    font-size: 40px;
     color: var(--color-accent);
     text-align: center;
   }
 
   h2 {
-    font-size: 32px;
-    margin-bottom: 70px;
+    font-size: 26px;
+    margin-top: 70px;
+    margin-bottom: 20px;
     color: var(--color-light-100);
     text-transform: none;
     hyphens: auto;
+
+    &:first-child {
+      margin-top: 0;
+    }
   }
 
   h3,
@@ -79,19 +84,28 @@
   padding: 90px 200px 300px;
 }
 
-@media (max-width: 1605px) {
-  .privacyPage {
-    h1 {
-      font-size: 50px;
-    }
-  }
+.fileContainer {
+  margin: 90px 200px 0;
+}
+
+.file {
+  padding: 20px 24px;
+  background-color: var(--color-primary);
+  color: var(--color-light-100);
+  border-radius: 500px;
+  text-align: center;
+  transition: background-color 0.3s;
+}
+
+.file:hover {
+  background-color: #8c04ff;
 }
 
 @media (max-width: 1425px) {
-  .privacyPage {
+  .docPage {
     h2 {
-      font-size: 26px;
-      margin-bottom: 30px;
+      margin-top: 30px;
+      margin-bottom: 10px;
     }
   }
 
@@ -99,10 +113,13 @@
     color: var(--color-light-100);
     padding: 40px 100px 300px;
   }
+  .fileContainer {
+    margin: 40px 100px 0;
+  }
 }
 
 @media (max-width: 1000px) {
-  .privacyPage {
+  .docPage {
     h1 {
       font-size: 34px;
     }
@@ -115,14 +132,19 @@
 }
 
 @media (max-width: 1000px) {
-  .privacyPage {
+  .docPage {
     h1 {
-      font-size: 20px;
+      font-size: 18px;
+      hyphens: auto;
+    }
+
+    h2 {
+      font-size: 14px;
     }
 
     h3,
     li:has(h3)::before {
-      font-size: 18px;
+      font-size: 14px;
       hyphens: auto;
     }
 
@@ -151,6 +173,14 @@
 
   .content {
     padding: 40px 0 300px;
+    font-size: 14px;
+  }
+  .fileContainer {
+    margin: 40px 0 0;
+  }
+
+  .file {
+    padding: 10px 14px;
     font-size: 14px;
   }
 }
