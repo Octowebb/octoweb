@@ -227,7 +227,7 @@ export const api = {
   },
 
   //POST
-  async postForm(form: FormValues) {
+  async postForm(form: Omit<FormValues, "permission">) {
     const formData = new FormData();
     formData.append("form_id", "contact-page");
 

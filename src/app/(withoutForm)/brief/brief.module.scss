@@ -167,6 +167,15 @@
   top: -300px;
 }
 
+.error {
+  color: var(--color-error);
+  font-size: 14px;
+  font-weight: var(--font-weight-regular-300);
+  border-top: 1px solid var(--color-error);
+  margin-top: 10px;
+  padding-top: 3px;
+}
+
 @media (max-width: 1905px) {
   .explanation {
     font-size: 18px;
@@ -183,6 +192,7 @@
   .navbar {
     margin: 50px 0 0;
   }
+
   .submit {
     gap: 70px;
     margin-top: 100px;
@@ -231,6 +241,10 @@
   .terms {
     max-width: unset;
     font-size: 24px;
+
+    &::first-line {
+      line-height: 1;
+    }
   }
 
   .bubble {
@@ -375,5 +389,9 @@
     height: 400px;
     right: -150px;
     top: 100px;
+  }
+
+  .error {
+    font-size: 10px;
   }
 }

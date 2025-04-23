@@ -86,4 +86,5 @@ export const defaultBriefValues = {
     additionalInfo: "",
     additionalFiles: {} as FileList,
   },
+  permission: true as const,
 };

@@ -44,12 +44,15 @@ export const Form = (props: FormProps) => {
       projectDescription: "",
       projectDescriptionFile: {} as FileList,
       mailing: false,
+      permission: true,
     },
     mode: "onBlur",
   });
 
   const onSubmit = async (data: FormValues) => {
-    const response = await api.postForm(data);
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    const { permission, ...restData } = data;
+    const response = await api.postForm(restData);
     if (!response) {
       toast.error("Что-то пошло не так");
       return;
@@ -140,30 +143,38 @@ export const Form = (props: FormProps) => {
           className={s.checkbox}
         />
         <div className={s.submit}>
-          <p>
-            Я принимаю условия{" "}
-            <Link href={routes.userAgreement} target="_blank">
-              Пользовательского соглашения
-            </Link>{" "}
-            и даю свое согласие на обработку моих персональных данных на
-            условиях{" "}
-            <Link href={routes.privacyPolicy} target="_blank">
-              Политики конфиденциальности.
-            </Link>{" "}
-            <span>
-              С&nbsp;
-              <Link href={routes.personalDataPolicy} target="_blank">
-                Политикой в отношении обработки и защиты персональных данных
-              </Link>{" "}
-              ознакомлен.
-            </span>
-          </p>
+          <Checkbox
+            {...register("permission")}
+            text={
+              <p>
+                Я принимаю условия{" "}
+                <Link href={routes.userAgreement} target="_blank">
+                  Пользовательского соглашения
+                </Link>{" "}
+                и даю свое согласие на обработку моих персональных данных на
+                условиях{" "}
+                <Link href={routes.privacyPolicy} target="_blank">
+                  Политики конфиденциальности.
+                </Link>{" "}
+                <span>
+                  С&nbsp;
+                  <Link href={routes.personalDataPolicy} target="_blank">
+                    Политикой в отношении обработки и защиты персональных данных
+                  </Link>{" "}
+                  ознакомлен.
+                </span>
+              </p>
+            }
+          />
           <Button
             text={"Отправить"}
             type={"submit"}
             className={s.arrowButton}
           />
         </div>
+        {errors?.permission?.message && (
+          <p className={s.error}>{errors?.permission?.message}</p>
+        )}
       </form>
     </div>
   );

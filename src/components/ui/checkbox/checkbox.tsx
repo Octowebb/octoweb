@@ -1,9 +1,9 @@
-import React, { ComponentPropsWithoutRef, Ref } from "react";
+import React, { ComponentPropsWithoutRef, ReactNode, Ref } from "react";
 import { clsx } from "clsx";
 import s from "./checkbox.module.scss";
 
 export type CheckboxProps = {
-  text: string;
+  text: string | ReactNode;
   divProps?: ComponentPropsWithoutRef<"div">;
 } & ComponentPropsWithoutRef<"input">;
 

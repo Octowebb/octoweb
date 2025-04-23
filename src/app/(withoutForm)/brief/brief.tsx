@@ -37,6 +37,7 @@ import { LinearLoader } from "@/components/ui/linearLoader/linearLoader";
 import { routes } from "@/common/routes";
 import Link from "next/link";
 import { toast } from "react-toastify";
+import { Checkbox } from "@/components/ui/checkbox/checkbox";
 
 export default function Brief() {
   const [isFormNotificationShown, setIsFormNotificationShown] = useState(false);
@@ -375,6 +376,12 @@ export default function Brief() {
     targetGroup,
     materials,
     additionalInfo,
+    permission: z.literal(true, {
+      errorMap: () => ({
+        message:
+          "Подтвердите согласие с условиями и политикой конфиденциальности",
+      }),
+    }),
   });
   type BriefValues = z.infer<typeof briefSchema>;
 
@@ -410,7 +417,9 @@ export default function Brief() {
   }
 
   const onSubmit = async (data: BriefValues) => {
-    const response = await api.postBrief(data);
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    const { permission, ...restData } = data;
+    const response = await api.postBrief(restData);
     if (!response) {
       toast.error("Что-то пошло не так");
       return;
@@ -1232,36 +1241,42 @@ export default function Brief() {
             </div>
           </div>
           <section className={s.submit}>
-            <p className={s.terms}>
-              Я принимаю условия{" "}
-              <Link
-                href={routes.userAgreement}
-                target="_blank"
-                className={clsx(s.doc, "noRoutingLink")}
-              >
-                Пользовательского соглашения
-              </Link>{" "}
-              и даю свое согласие на обработку моих персональных данных на
-              условиях{" "}
-              <Link
-                href={routes.privacyPolicy}
-                target="_blank"
-                className={clsx(s.doc, "noRoutingLink")}
-              >
-                Политики конфиденциальности.
-              </Link>{" "}
-              <span>
-                С&nbsp;
-                <Link
-                  href={routes.personalDataPolicy}
-                  target="_blank"
-                  className={clsx(s.doc, "noRoutingLink")}
-                >
-                  Политикой в отношении обработки и защиты персональных данных
-                </Link>{" "}
-                ознакомлен.
-              </span>
-            </p>
+            <Checkbox
+              {...register("permission")}
+              text={
+                <p className={s.terms}>
+                  Я принимаю условия{" "}
+                  <Link
+                    href={routes.userAgreement}
+                    target="_blank"
+                    className={clsx(s.doc, "noRoutingLink")}
+                  >
+                    Пользовательского соглашения
+                  </Link>{" "}
+                  и даю свое согласие на обработку моих персональных данных на
+                  условиях{" "}
+                  <Link
+                    href={routes.privacyPolicy}
+                    target="_blank"
+                    className={clsx(s.doc, "noRoutingLink")}
+                  >
+                    Политики конфиденциальности.
+                  </Link>{" "}
+                  <span>
+                    С&nbsp;
+                    <Link
+                      href={routes.personalDataPolicy}
+                      target="_blank"
+                      className={clsx(s.doc, "noRoutingLink")}
+                    >
+                      Политикой в отношении обработки и защиты персональных
+                      данных
+                    </Link>{" "}
+                    ознакомлен.
+                  </span>
+                </p>
+              }
+            />
             <Button
               text={"Отправить"}
               type={"submit"}
@@ -1269,6 +1284,9 @@ export default function Brief() {
               disabled={isSubmitting}
             />
           </section>
+          {errors?.permission?.message && (
+            <p className={s.error}>{errors?.permission?.message}</p>
+          )}
         </form>
       </div>
     </div>
