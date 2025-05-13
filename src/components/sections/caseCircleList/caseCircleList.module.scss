@@ -11,18 +11,20 @@
 .circles {
   --slides-gap: 32px;
   user-select: none;
+  cursor: grab;
 
   .slide {
-    width: fit-content;
-    margin-right: var(--slides-gap);
+    width: fit-content !important;
+    padding-right: var(--slides-gap);
+    flex-shrink: 0;
   }
 
   .slide:first-child {
-    margin-left: var(--offset-x);
+    padding-left: var(--offset-x);
   }
 
   .slide:last-child {
-    margin-right: var(--offset-x);
+    padding-right: var(--offset-x);
   }
 }
 

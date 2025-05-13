@@ -11,22 +11,22 @@
   position: absolute;
   width: 100vw;
   left: 0;
+  cursor: grab;
 }
 
-.cards {
-  .slide {
-    width: fit-content;
-    padding-right: var(--slides-gap);
-    user-select: none;
-  }
+.slide {
+  width: fit-content !important;
+  padding-right: var(--slides-gap);
+  user-select: none;
+  flex-shrink: 0;
+}
 
-  .slide:first-child {
-    margin-left: var(--extreme-slide-offset);
-  }
+.slide:first-child {
+  padding-left: var(--extreme-slide-offset);
+}
 
-  .slide:last-child {
-    padding-right: var(--extreme-slide-offset);
-  }
+.slide:last-child {
+  padding-right: var(--extreme-slide-offset);
 }
 
 .caption {

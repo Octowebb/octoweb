@@ -23,16 +23,17 @@
   left: 0;
 }
 
-.teamBlock .swiperSlide {
-  width: 536px;
-  margin-right: 24px;
+.teamBlock .slide {
+  width: fit-content !important;
+  flex-shrink: 0;
+  padding-right: 24px;
 
   &:first-child {
-    margin-left: var(--offset-x);
+    padding-left: var(--offset-x);
   }
 
   &:last-child {
-    margin-right: var(--offset-x);
+    padding-right: var(--offset-x);
   }
 }
 
@@ -49,8 +50,7 @@
     gap: 16px;
   }
 
-  .teamBlock .swiperSlide {
-    width: 288px;
-    margin-right: 10px;
+  .teamBlock .slide {
+    padding-right: 10px;
   }
 }

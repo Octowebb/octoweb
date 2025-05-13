@@ -22,6 +22,7 @@
     "clsx": "^2.1.1",
     "file-loader": "^6.2.0",
     "gsap": "^3.12.7",
+    "keen-slider": "^6.8.6",
     "lottie-react": "^2.4.0",
     "next": "^14.2.23",
     "react": "^18",
@@ -32,7 +33,6 @@
     "react-textarea-autosize": "^8.5.3",
     "react-toastify": "^11.0.3",
     "sass": "^1.79.4",
-    "swiper": "^11.1.14",
     "ymap3-components": "^1.1.6",
     "zod": "^3.23.8"
   },

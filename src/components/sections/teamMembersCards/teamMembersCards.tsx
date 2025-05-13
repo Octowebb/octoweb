@@ -1,6 +1,6 @@
 "use client";
 
-import { MutableRefObject, useRef, useState } from "react";
+import { useState } from "react";
 import clsx from "clsx";
 import s from "./teamMembersCards.module.scss";
 import {
@@ -8,8 +8,8 @@ import {
   TeamMemberCard,
 } from "@/components/layouts/teamMemberCard/teamMemberCard";
 import { NavigationButton } from "@/components/ui/buttons/navigationButton/navigationButton";
-import { Swiper, SwiperClass, SwiperSlide } from "swiper/react";
-import "swiper/css";
+import "keen-slider/keen-slider.scss";
+import { useKeenSlider } from "keen-slider/react";
 
 export type TeamMemberCardsProps = {
   teamMembers: TeamMember[];
@@ -18,35 +18,31 @@ export type TeamMemberCardsProps = {
 
 export const TeamMemberCards = (props: TeamMemberCardsProps) => {
   const { teamMembers, className } = props;
-  const swiperRef = useRef<SwiperClass>(null);
   const classNames = clsx(s.teamBlock, className);
   const [isBeginning, setIsBeginning] = useState(true);
   const [isEnd, setIsEnd] = useState(false);
 
-  const teamMemberList = teamMembers.map((member, index) => {
+  const [sliderRef, instanceRef] = useKeenSlider({
+    slides: {
+      perView: "auto",
+    },
+    renderMode: "performance",
+    slideChanged(slider) {
+      setIsBeginning(slider.track.details.rel === 0);
+      setIsEnd(slider.track.details.maxIdx === slider.track.details.rel);
+    },
+  });
+
+  const teamMemberList = teamMembers.map((member) => {
     return (
-      <SwiperSlide
-        virtualIndex={index}
-        key={member.name}
-        className={s.swiperSlide}
-      >
+      <div className={clsx(s.slide, "keen-slider__slide")} key={member.name}>
         <TeamMemberCard {...member} className={s.cardItem} />
-      </SwiperSlide>
+      </div>
     );
   });
 
-  const handleSwiper = (
-    swiper: SwiperClass,
-    swiperRef: MutableRefObject<SwiperClass>,
-  ) => {
-    swiperRef.current = swiper;
-  };
-  const handleUpdateButtonsState = (swiper: SwiperClass) => {
-    setIsBeginning(swiper.isBeginning);
-    setIsEnd(swiper.isEnd);
-  };
-  const handlePrevButtonClick = () => swiperRef.current?.slidePrev();
-  const handleNextButtonClick = () => swiperRef.current?.slideNext();
+  const handlePrevButtonClick = () => instanceRef.current?.prev();
+  const handleNextButtonClick = () => instanceRef.current?.next();
 
   return (
     <section className={classNames} id={"team"}>
@@ -68,16 +64,9 @@ export const TeamMemberCards = (props: TeamMemberCardsProps) => {
         </div>
       </div>
       <div className={s.placeholder}>
-        <Swiper
-          className={s.cards}
-          slidesPerView={"auto"}
-          onSwiper={(swiper) =>
-            handleSwiper(swiper, swiperRef as MutableRefObject<SwiperClass>)
-          }
-          onProgress={handleUpdateButtonsState}
-        >
+        <div ref={sliderRef} className="keen-slider">
           {teamMemberList}
-        </Swiper>
+        </div>
       </div>
     </section>
   );
