@@ -217,11 +217,9 @@ export const Cases = () => {
           </div>
         )}
         {casesCards.length < total && (
-          <Button
-            text={"Показать ещё"}
-            className={s.showMoreButton}
-            onClick={getMoreCases}
-          />
+          <div className={s.showMoreButton}>
+            <Button text={"Показать ещё"} onClick={getMoreCases} />
+          </div>
         )}
         <div className={s.bigBubbleEndContainer}>
           <BigBubble className={s.bigBubbleEnd} />
