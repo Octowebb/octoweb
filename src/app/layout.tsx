@@ -25,16 +25,16 @@ export default function RootLayout({
   return (
     <html lang="ru" className={clsx(unbounded.variable, montserrat.variable)}>
       <head>
-        <meta name="yandex-verification" content="95ff48d9d265e496" />
-        <noscript>
-          <div>
-            <img
-              src="https://mc.yandex.ru/watch/100000079"
-              style={{ position: "absolute", left: "-9999px" }}
-              alt=""
-            />
-          </div>
-        </noscript>
+        {/*<meta name="yandex-verification" content="95ff48d9d265e496" />*/}
+        {/*<noscript>*/}
+        {/*  <div>*/}
+        {/*    <img*/}
+        {/*      src="https://mc.yandex.ru/watch/100000079"*/}
+        {/*      style={{ position: "absolute", left: "-9999px" }}*/}
+        {/*      alt=""*/}
+        {/*    />*/}
+        {/*  </div>*/}
+        {/*</noscript>*/}
       </head>
       <body>
         <PageLoader />
