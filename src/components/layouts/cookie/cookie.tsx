@@ -38,7 +38,7 @@ export const Cookie = () => {
         <div className={s.cookie}>
           <p>
             Используя данный сайт, вы даете согласие на использование файлов
-            cookie, помогающих нам сделать его удобнее для вас!
+            cookie, помогающих нам сделать его удобнее для вас.
           </p>
           <div className={s.buttons}>
             <button className={s.button} onClick={accept}>
