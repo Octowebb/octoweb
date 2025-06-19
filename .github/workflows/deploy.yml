@@ -28,5 +28,5 @@ jobs:
             git pull origin master
             npm install
             npm run build
-            pm2 restart octow || pm2 start npm --name "octow" -- run start
+            /root/.nvm/versions/node/v20.19.2/bin/pm2 restart octow || /root/.nvm/versions/node/v20.19.2/bin/pm2 start npm --name "octow" -- run start
           EOF
