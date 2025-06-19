@@ -23,6 +23,7 @@ jobs:
         run: |
           ssh -o StrictHostKeyChecking=no ${{ secrets.SERVER_USER }}@${{ secrets.SERVER_HOST }} << 'EOF'
             set -e
+            git config --global --add safe.directory /var/www/octow_ru_usr/data/www/octow.ru
             cd /var/www/octow_ru_usr/data/www/octow.ru
             git pull origin master
             npm install
