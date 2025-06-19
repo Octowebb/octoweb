@@ -21,10 +21,10 @@ jobs:
 
       - name: Deploy and Rebuild on Server
         run: |
-          ssh -o StrictHostKeyChecking=no ${{ secrets.SERVER_USERNAME }}@${{ secrets.SERVER_HOST }} << 'EOF'
+          ssh -o StrictHostKeyChecking=no ${{ secrets.SERVER_USER }}@${{ secrets.SERVER_HOST }} << 'EOF'
             set -e
             cd /var/www/octow_ru_usr/data/www/octow.ru
-            git pull origin main
+            git pull origin master
             npm install
             npm run build
             pm2 restart octow || pm2 start npm --name "octow" -- run start
