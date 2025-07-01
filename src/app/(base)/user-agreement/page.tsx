@@ -1,6 +1,16 @@
 import { api } from "@/common/api";
 import s from "../privacy-policy/docs.module.scss";
 import { clsx } from "clsx";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Пользовательское соглашение",
+  description: "Пользовательское соглашение",
+  robots: {
+    index: false,
+    follow: false,
+  },
+};
 
 export default async function UserAgreement() {
   const response = await api.getUserAgreement();

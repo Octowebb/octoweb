@@ -1,6 +1,16 @@
 import { api } from "@/common/api";
 import s from "../privacy-policy/docs.module.scss";
 import { clsx } from "clsx";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Политика использования cookie",
+  description: "Политика использования cookie",
+  robots: {
+    index: false,
+    follow: false,
+  },
+};
 
 export default async function CookieUsing() {
   const response = await api.getCookieUsing();

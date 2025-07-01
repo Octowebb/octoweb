@@ -4,6 +4,10 @@ Disallow: */?
 Disallow: *?s=
 Disallow: *&s=
 Disallow: /xmlrpc.php
+Disallow: /privacy-policy
+Disallow: /cookie-using
+Disallow: /personal-data-policy
+Disallow: /user-agreement
 Allow: /*.js
 Allow: /*.css
 Allow: /*.png
@@ -18,6 +22,10 @@ Disallow: */?
 Disallow: *?s=
 Disallow: *&s=
 Disallow: /xmlrpc.php
+Disallow: /privacy-policy
+Disallow: /cookie-using
+Disallow: /personal-data-policy
+Disallow: /user-agreement
 Allow: /*.js
 Allow: /*.css
 Allow: /*.png
@@ -32,6 +40,10 @@ Disallow: */?
 Disallow: *?s=
 Disallow: *&s=
 Disallow: /xmlrpc.php
+Disallow: /privacy-policy
+Disallow: /cookie-using
+Disallow: /personal-data-policy
+Disallow: /user-agreement
 Allow: /*.js
 Allow: /*.css
 Allow: /*.png

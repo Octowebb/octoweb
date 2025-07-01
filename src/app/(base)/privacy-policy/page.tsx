@@ -2,6 +2,17 @@ import { api } from "@/common/api";
 import s from "./docs.module.scss";
 import { clsx } from "clsx";
 
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Политика конфиденциальности",
+  description: "Политика конфиденциальности",
+  robots: {
+    index: false,
+    follow: false,
+  },
+};
+
 export default async function PrivacyPolicy() {
   const response = await api.getPrivacyPolicy();
 
