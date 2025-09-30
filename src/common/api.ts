@@ -227,9 +227,7 @@ export const api = {
   },
 
   //POST
-  async postForm(
-    form: Omit<FormValues, "permission"> & { "smart-token": string },
-  ) {
+  async postForm(form: Omit<FormValues, "permission"> & { token: string }) {
     const formData = new FormData();
     formData.append("form_id", "contact-page");
 
@@ -257,8 +255,8 @@ export const api = {
     const formData = new FormData();
     formData.append("form_id", "brief");
     Object.entries(form).forEach(([key, value]) => {
-      if (key === "smart-token") {
-        formData.append("smart-token", String(value));
+      if (key === "token") {
+        formData.append("token", String(value));
         return;
       }
       if (typeof value === "object" && value !== null) {
