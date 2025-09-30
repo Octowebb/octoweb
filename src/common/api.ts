@@ -256,7 +256,7 @@ export const api = {
     formData.append("form_id", "brief");
     Object.entries(form).forEach(([key, value]) => {
       if (key === "token") {
-        formData.append("token", String(value));
+        formData.append("smart-token", String(value));
         return;
       }
       if (typeof value === "object" && value !== null) {
