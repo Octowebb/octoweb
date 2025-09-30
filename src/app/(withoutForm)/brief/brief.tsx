@@ -421,6 +421,11 @@ export default function Brief() {
   const onSubmit = async (data: BriefValues) => {
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const { permission, ...restData } = data;
+    if (!captchaToken) {
+      toast.error("Пройдите проверку капчи");
+      return;
+    }
+
     const response = await api.postBrief({
       ...restData,
       token: captchaToken,
