@@ -234,6 +234,8 @@ export const api = {
     Object.entries(form).forEach(([key, value]) => {
       if (value instanceof FileList) {
         formData.append(`data[${key}]`, value[0]);
+      } else if (key === "token") {
+        formData.append("smart-token", String(value));
       } else {
         formData.append(`data[${key}]`, String(value));
       }
@@ -257,7 +259,6 @@ export const api = {
     Object.entries(form).forEach(([key, value]) => {
       if (key === "token") {
         formData.append("smart-token", String(value));
-        return;
       }
       if (typeof value === "object" && value !== null) {
         Object.entries(value).forEach(([subKey, subValue]) => {
