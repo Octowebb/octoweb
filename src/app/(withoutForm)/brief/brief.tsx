@@ -38,11 +38,13 @@ import { routes } from "@/common/routes";
 import Link from "next/link";
 import { toast } from "react-toastify";
 import { Checkbox } from "@/components/ui/checkbox/checkbox";
+import { SmartCaptcha } from "@yandex/smart-captcha";
 
 export default function Brief() {
   const [isFormNotificationShown, setIsFormNotificationShown] = useState(false);
   const [materialsDevelopment, setMaterialsDevelopment] = useState("yes");
   const [knowTargetAudience, setTargetAudience] = useState("yes");
+  const [captchaToken, setCaptchaToken] = useState<string>("");
 
   const allFields: AllFields = useMemo(
     () => ({
@@ -419,7 +421,10 @@ export default function Brief() {
   const onSubmit = async (data: BriefValues) => {
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const { permission, ...restData } = data;
-    const response = await api.postBrief(restData);
+    const response = await api.postBrief({
+      ...restData,
+      "smart-token": captchaToken,
+    });
     if (!response) {
       toast.error("Что-то пошло не так");
       return;
@@ -435,8 +440,8 @@ export default function Brief() {
           if (index === 0) setFocus(fieldName);
         });
       }
-      if (response?.code === "recaptcha_failed") {
-        toast.error("Вы не прошли проверку recaptcha");
+      if (response?.code === "captcha_failed") {
+        toast.error("Вы не прошли проверку SmartCaptcha");
       }
       if (response?.data?.status === 500) {
         toast.error(response?.message || "Что-то пошло не так");
@@ -1239,6 +1244,12 @@ export default function Brief() {
                 </section>
               </Element>
             </div>
+          </div>
+          <div className={s.captchaContainer}>
+            <SmartCaptcha
+              sitekey={process.env.NEXT_PUBLIC_YC_CLIENT_KEY || ""}
+              onSuccess={setCaptchaToken}
+            />
           </div>
           <section className={s.submit}>
             <Checkbox

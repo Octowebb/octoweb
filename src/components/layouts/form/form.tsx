@@ -17,6 +17,7 @@ import { Loader } from "@/components/ui/loader/loader";
 import Link from "next/link";
 import { routes } from "@/common/routes";
 import { toast } from "react-toastify";
+import { SmartCaptcha } from "@yandex/smart-captcha";
 
 export type FormValues = z.infer<typeof formSchema>;
 export type FormProps = ComponentPropsWithoutRef<"div">;
@@ -24,6 +25,7 @@ export type FormProps = ComponentPropsWithoutRef<"div">;
 export const Form = (props: FormProps) => {
   const { className, ...restProps } = props;
   const classNames = clsx(s.form, className);
+  const [captchaToken, setCaptchaToken] = useState<string>("");
   const [isFormNotificationShown, setIsFormNotificationShown] = useState(false);
   const form = useRef<HTMLFormElement>(null);
 
@@ -52,7 +54,15 @@ export const Form = (props: FormProps) => {
   const onSubmit = async (data: FormValues) => {
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const { permission, ...restData } = data;
-    const response = await api.postForm(restData);
+    if (!captchaToken) {
+      toast.error("Пройдите проверку капчи");
+      return;
+    }
+
+    const response = await api.postForm({
+      ...restData,
+      "smart-token": captchaToken,
+    });
     if (!response) {
       toast.error("Что-то пошло не так");
       return;
@@ -66,8 +76,8 @@ export const Form = (props: FormProps) => {
           setError(typedKey, { type: "server", message: value as string });
           if (index === 0) setFocus(typedKey);
         });
-      if (response?.code === "recaptcha_failed") {
-        toast.error("Вы не прошли проверку recaptcha");
+      if (response?.code === "captcha_failed") {
+        toast.error("Вы не прошли проверку SmartCaptcha");
       }
       if (response?.data?.status === 500) {
         toast.error(response?.message || "Что-то пошло не так");
@@ -142,6 +152,12 @@ export const Form = (props: FormProps) => {
           text={"Хочу получать информационные и рекламные письма от OctoWeb"}
           className={s.checkbox}
         />
+        <div className={s.captchaContainer}>
+          <SmartCaptcha
+            sitekey={process.env.NEXT_PUBLIC_YC_CLIENT_KEY || ""}
+            onSuccess={setCaptchaToken}
+          />
+        </div>
         <div className={s.submit}>
           <Checkbox
             {...register("permission")}
