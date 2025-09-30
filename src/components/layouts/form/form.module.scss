@@ -70,6 +70,10 @@
   transition: all 0.3s;
 }
 
+.captchaContainer {
+  margin-bottom: 20px;
+}
+
 .error {
   color: var(--color-error);
   font-size: 14px;

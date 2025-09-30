@@ -18,6 +18,7 @@
     "@radix-ui/react-visually-hidden": "^1.1.2",
     "@react-spring/web": "^9.7.5",
     "@types/grecaptcha": "^3.0.9",
+    "@yandex/smart-captcha": "2.8.0",
     "@yandex/ymaps3-types": "^0.0.28",
     "clsx": "^2.1.1",
     "file-loader": "^6.2.0",

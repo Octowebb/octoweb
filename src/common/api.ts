@@ -227,7 +227,9 @@ export const api = {
   },
 
   //POST
-  async postForm(form: Omit<FormValues, "permission">) {
+  async postForm(
+    form: Omit<FormValues, "permission"> & { "smart-token": string },
+  ) {
     const formData = new FormData();
     formData.append("form_id", "contact-page");
 
@@ -238,20 +240,6 @@ export const api = {
         formData.append(`data[${key}]`, String(value));
       }
     });
-
-    const validationToken = await new Promise<string | undefined>((resolve) => {
-      grecaptcha.ready(() => {
-        grecaptcha
-          .execute("6Le0rM0qAAAAAIF-8ZPeA5_0RThCMWK1E_PIiv6c", {
-            action: "submit",
-          })
-          .then((token: string) => {
-            resolve(token);
-          });
-      });
-    });
-
-    formData.append("g-recaptcha-response", validationToken || "");
 
     try {
       const response = await fetch(`${baseUrl}/contact-form`, {
@@ -265,41 +253,33 @@ export const api = {
       return { message: "Произошла неизвестная ошибка" };
     }
   },
-  async postBrief(form: Record<string, Record<string, unknown>>) {
+  async postBrief(form: Record<string, unknown>) {
     const formData = new FormData();
     formData.append("form_id", "brief");
     Object.entries(form).forEach(([key, value]) => {
-      Object.entries(value).forEach(([subKey, subValue]) => {
-        if (
-          subKey === "technicalSpecification" ||
-          subKey === "additionalFiles"
-        ) {
-          if (Array.isArray(subValue) && subValue.length > 0) {
-            for (const file of subValue) {
-              formData.append(`data[${key}][${subKey}][]`, file);
+      if (key === "smart-token") {
+        formData.append("smart-token", String(value));
+        return;
+      }
+      if (typeof value === "object" && value !== null) {
+        Object.entries(value).forEach(([subKey, subValue]) => {
+          if (
+            subKey === "technicalSpecification" ||
+            subKey === "additionalFiles"
+          ) {
+            if (Array.isArray(subValue) && subValue.length > 0) {
+              for (const file of subValue) {
+                formData.append(`data[${key}][${subKey}][]`, file);
+              }
+            } else {
+              formData.append(`data[${key}][${subKey}]`, "");
             }
           } else {
-            formData.append(`data[${key}][${subKey}]`, "");
+            formData.append(`data[${key}][${subKey}]`, String(subValue ?? ""));
           }
-        } else {
-          formData.append(`data[${key}][${subKey}]`, String(subValue ?? ""));
-        }
-      });
+        });
+      }
     });
-
-    const validationToken = await new Promise<string | undefined>((resolve) => {
-      grecaptcha.ready(() => {
-        grecaptcha
-          .execute("6Le0rM0qAAAAAIF-8ZPeA5_0RThCMWK1E_PIiv6c", {
-            action: "submit",
-          })
-          .then((token: string) => {
-            resolve(token);
-          });
-      });
-    });
-
-    formData.append("g-recaptcha-response", validationToken || "");
 
     try {
       const response = await fetch(`${baseUrl}/contact-form`, {
