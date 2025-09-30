@@ -61,7 +61,7 @@ export const Form = (props: FormProps) => {
 
     const response = await api.postForm({
       ...restData,
-      "smart-token": captchaToken,
+      token: captchaToken,
     });
     if (!response) {
       toast.error("Что-то пошло не так");

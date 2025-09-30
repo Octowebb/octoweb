@@ -423,7 +423,7 @@ export default function Brief() {
     const { permission, ...restData } = data;
     const response = await api.postBrief({
       ...restData,
-      "smart-token": captchaToken,
+      token: captchaToken,
     });
     if (!response) {
       toast.error("Что-то пошло не так");
