@@ -117,7 +117,7 @@ export const api = {
       const response = await fetch(`${baseUrl}/cases/filter`);
       const data: CasesFiltersData[] = await response.json();
       const filters = data.map((filter) => filter.name);
-      const filtersWithDefault = ["All projects", ...filters];
+      const filtersWithDefault = ["Все проекты", ...filters];
       return filtersWithDefault;
     } catch (error) {
       console.error("Не удалось загрузить фильтры", error);
@@ -154,7 +154,7 @@ export const api = {
       const data: ArticlesFilters = await response.json();
 
       const filters = data.categories.map((filter) => filter.name);
-      const filtersWithDefault = ["All", ...filters];
+      const filtersWithDefault = ["Все", ...filters];
       return filtersWithDefault;
     } catch (error) {
       console.error("Не удалось загрузить фильтры", error);

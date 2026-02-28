@@ -20,7 +20,7 @@ import { createQueryString } from "@/common/commonFunctions";
 gsap.registerPlugin(ScrollTrigger);
 
 export const Blog = () => {
-  const defaultFilter = "All";
+  const defaultFilter = "Все";
   const defaultPage = 1;
   const [articlesData, setArticles] =
     useState<(Article & { isNew: boolean })[]>();

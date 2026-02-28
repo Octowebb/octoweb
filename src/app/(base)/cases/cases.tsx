@@ -28,7 +28,7 @@ import { Button } from "@/components/ui/buttons/button/button";
 import { BigBubble } from "@/components/video/bigBubble";
 
 export const Cases = () => {
-  const defaultFilter = "All projects";
+  const defaultFilter = "Все проекты";
   const sizes = ["extraLarge", "large", "small", "medium", "fullWidth"];
   const defaultPage = 1;
   const [casesCircles, setCasesCircles] = useState<CaseCircle[]>();
