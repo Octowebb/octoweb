@@ -78,8 +78,8 @@ export const ContactLinks = (props: ContactLinksProps) => {
       <div className={classNames}>{contactLinks}</div>
       {needWarning && (
         <p className={s.warning}>
-          * Instagram принадлежит компании Meta, признанной экстремистской
-          организацией и запрещенной в РФ
+          * Instagram и WhatsApp принадлежат компании Meta, признанной
+          экстремистской организацией и запрещенной в РФ
         </p>
       )}
     </div>
